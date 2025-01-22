@@ -8,6 +8,7 @@ public class Stack<T> {
     }
     public Stack(int länge) {
         array = new Object[länge];
+        lastIndex = -1;
     }
     public void push(T element) throws StackFullException {
         if (lastIndex == array.length - 1) {
@@ -17,11 +18,11 @@ public class Stack<T> {
         }
     }
 
-    public T pop() throws StackEmptyException {
+    public void pop() throws StackEmptyException {
         if (lastIndex == -1) {
             throw new StackEmptyException();
         }else {
-            return (T) array[lastIndex--];
+            array[lastIndex] = null;
         }
     }
 
@@ -35,7 +36,7 @@ public class Stack<T> {
 
     public String list(){
         String list = "";
-        for (int i = 0; i < lastIndex; i++) {
+        for (int i = 0; i <= lastIndex; i++) {
             if (array[i] != null) {
                 list += array[i].toString();
                 if(i<lastIndex){
