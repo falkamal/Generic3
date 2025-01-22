@@ -1,6 +1,6 @@
 public class Stack<T> {
-    private Object[] array;
-    private int lastIndex;
+    private Object[] array;             //declaring the Object-Array as an attribute
+    private int lastIndex;              //the last index of the array, that is not null
 
     public Stack() {
         array = new Object[10];
@@ -18,11 +18,13 @@ public class Stack<T> {
         }
     }
 
-    public void pop() throws StackEmptyException {
+    public T pop() throws StackEmptyException {
         if (lastIndex == -1) {
             throw new StackEmptyException();
         }else {
             array[lastIndex] = null;
+            lastIndex--;
+            return (T) array[lastIndex];
         }
     }
 
